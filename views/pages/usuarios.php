@@ -14,51 +14,48 @@
             <div class="col-12">
                 <div class="card card-info card-outline">
                     <div class="card-header">
-                        <button type="button" class="btn btn-success create-profile " 
-                        data-toggle="modal" data-target="#modal-create-profile">Crear un nuevo perfil</button>
+                        <button type="button" class="btn btn-success create-user " 
+                        data-toggle="modal" data-target="#modal-create-user">Crear un nuevo usuario</button>
                     </div>
                     <br>
                     <div class="card-body">
-                        <table class="table table-bordered table-striped dt-responsive tableProfile" width="100%">
+                        <table class="table table-bordered table-striped dt-responsive tableUser" width="100%">
                             <thead>
                                 <tr>
                                     <th style="width:10px">#</th>
                                     <th>Nombre</th>
                                     <th>Usuario</th>
-                                    <th>Foto</th>
                                     <th>Rol</th>
+                                    <th>Foto</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php ?>
+                            <?php foreach($users as $key => $user): ?>
                                 <?php
-                                    foreach($users as $key => $value){
-
-                               
+                                $item = "id_roles";
+                                $userRoles = ctrRoles::ctrFetchRoles($item, $user["rol"]);
                                 ?>
                                 <tr>
-                                    <td><?php echo ($key+1) ?></td>
-                                    <td><?php echo $value["nombre"] ?></td>
-                                    <td><?php echo $value["usuario"] ?></td>
-                                    <td><?php echo $value["rol"] ?></td>
-                                    <td><?php echo $value["foto"] ?></td>
-                                    <td><button class="btn btn-info btn-sm">Activo</button></td>
+                                    <td><?php echo ($key + 1) ?></td>
+                                    <td><?php echo $user["nombre"] ?></td>
+                                    <td><?php echo $user["usuario"] ?></td>
+                                    <td><?php echo $userRoles["nom_rol"] ?></td>
+                                    <td><img src="<?php echo $user["foto"] ?>" width="40" height="40"></td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-warning btn-sm">
-                                                <i class="fas fa-pencil-alt text-white"></i>
+                                            <i class="fa-solid fa-pen"></i>
                                             </button>
                                             <button class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash-alt"></i>
+                                                <i class="fa fa-trash-alt text-white"></i>
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
-                                <?php
-                                     }
-                                ?>
-                            </tbody>
+                            <?php endforeach; ?>
+                        </tbody>
+
                         </table>
                     </div>    
                 </div>
@@ -75,7 +72,7 @@
 <!--=====================================
 Modal Crear usuarios
 ======================================-->
-<div class="modal modal-default fade" id="modal-create-profile">
+<div class="modal modal-default fade" id="modal-create-user">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -84,7 +81,7 @@ Modal Crear usuarios
             <form method="post" enctype="multipart/form-data" style="margin: 20px;">
 
                 <div class="form-group has-feedback" bis_skin_checked="1">
-                    <input type="text" class="form-control" name="nom_perfil" placeholder="nombre">
+                    <input type="text" class="form-control" name="nom_usuarios" placeholder="nombre">
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
 
@@ -100,20 +97,22 @@ Modal Crear usuarios
 
                 <div class="form-group has-feedback" bis_skin_checked="1">
                     <div class="btn btn-default btn-file" bis_skin_checked="1">
-                        <i class="fas fa-paperclip"></i> Adjuntar Imagen de perfil
-                        <input type="file" name="subirImgPerfil">
+                        <i class="fas fa-paperclip"></i> Adjuntar Imagen de usuario
+                        <input type="file" name="subirImgUser">
                     </div>
-                    <img class="previsualizarImgPerfil img-fluid py-2" width='200' height='200'>
+                    <br>
+                    <br>
+                    <img class="previsualizarImgUser img-fluid py-2" width='200' height='200'>
                     <p class="help-block small"> Dimensiones: 480px * 382px | Peso Max. 2MB | Formato: JPG o PNG</p>
                 </div>
 
 
                 <div class="form-group has-feedback">
-
-
                     <label>rol</label>
-
-
+                    <select name="rol_user" class="form-control" required>
+                        <option value="1">Administrador</option>
+                        <option value="2">Vendedor</option>
+                    </select>
                 </div>
 
                 <div class="modal-footer">
@@ -123,8 +122,8 @@ Modal Crear usuarios
 
                 <?php 
 
-              /*  $guardarPerfil = new ctrPerfiles();
-                $guardarPerfil->ctrGuardarPerfil();*/
+                $saveUsers = new ctrUsers();
+                $saveUsers->ctrSaveUsers();
                 
                 
                 ?>

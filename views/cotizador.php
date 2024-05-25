@@ -1,6 +1,6 @@
 <?php 
    include_once "controller/usuarios.controller.php";
-  $users = ctrUsers::ctrFetchUsers();
+   $users = ctrUsers::ctrFetchUsers();
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="views/resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
+ <link rel="stylesheet" href="views/resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="views/resources/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
@@ -32,7 +32,8 @@
   <link rel="stylesheet" href="views/resources/bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="views/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -106,9 +107,6 @@
 <script src="views/resources/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="views/resources/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="views/resources/dist/js/pages/dashboard.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="views/resources/dist/js/demo.js"></script>
+<script src="views/js/users.js"></script>
 </body>
 </html>
