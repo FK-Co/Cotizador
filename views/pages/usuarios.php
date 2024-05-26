@@ -44,7 +44,7 @@
                                     <td><img src="<?php echo $user["foto"] ?>" width="40" height="40"></td>
                                     <td>
                                         <div class="btn-group">
-                                            <button class="btn btn-warning btn-sm">
+                                            <button class="btn btn-warning btn-sm btnEditUser" data-toggle="modal" idUser="<?php echo $user["id"] ?>" data-target="#modal-edit-user">
                                             <i class="fa-solid fa-pen"></i>
                                             </button>
                                             <button class="btn btn-danger btn-sm">
@@ -86,12 +86,12 @@ Modal Crear usuarios
                 </div>
 
                 <div class="form-group has-feedback" bis_skin_checked="1">
-                    <input type="text" class="form-control" name="nom_user" placeholder="usuario">
+                    <input type="text" class="form-control"  name="nom_user" placeholder="usuario">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
 
                 <div class="form-group has-feedback" bis_skin_checked="1">
-                    <input type="password" class="form-control" name="pass_user" placeholder="contraseña">
+                    <input type="password" class="form-control"  name="pass_user" placeholder="contraseña">
                     <span class="glyphicon glyphicon-eye-close form-control-feedback"></span>
                 </div>
 
@@ -124,6 +124,75 @@ Modal Crear usuarios
 
                 $saveUsers = new ctrUsers();
                 $saveUsers->ctrSaveUsers();
+                
+                
+                ?>
+
+
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+<!--=====================================
+Modal Editar usuarios
+======================================-->
+<div class="modal modal-default fade" id="modal-edit-user">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="alert alert-success alert-dismissible ">Editar usuario</h4>
+            </div>
+            <form method="post" enctype="multipart/form-data" style="margin: 20px;">
+
+                <div class="form-group has-feedback" bis_skin_checked="1">
+                    <input type="text" class="form-control"  id="nom_usuariosE" name="nom_usuariosE" placeholder="nombre">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback" bis_skin_checked="1">
+                    <input type="text" class="form-control" id="nom_userE" name="nom_userE" placeholder="usuario">
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback" bis_skin_checked="1">
+                    <input type="password" class="form-control" id="pass_userE" name="pass_userE" placeholder="contraseña">
+                    <span class="glyphicon glyphicon-eye-close form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback" bis_skin_checked="1">
+                    <div class="btn btn-default btn-file" bis_skin_checked="1">
+                        <i class="fas fa-paperclip"></i> Adjuntar Imagen de usuario
+                        <input type="file" name="subirImgUserE">
+                    </div>
+                    <br>
+                    <br>
+                    <img class="previsualizarImgUser img-fluid py-2" width='200' height='200'>
+                    <p class="help-block small"> Dimensiones: 480px * 382px | Peso Max. 2MB | Formato: JPG o PNG</p>
+                </div>
+
+
+                <div class="form-group has-feedback">
+                    <label>rol</label>
+                    <select name="rol_userE" class="form-control" required>
+                        <option value="1">Administrador</option>
+                        <option value="2">Vendedor</option>
+                    </select>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">cerrar</button>
+                    <button type="submit" class="btn btn-primary">guardar</button>
+                </div>
+
+                <?php 
+
+                //$saveUsers = new ctrUsers();
+               // $saveUsers->ctrSaveUsers();
                 
                 
                 ?>

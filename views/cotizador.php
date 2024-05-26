@@ -1,5 +1,7 @@
 <?php 
    include_once "controller/usuarios.controller.php";
+   include_once "controller/usuarios.controller.php";
+   $roles = ctrRoles::ctrGetRoles();
    $users = ctrUsers::ctrFetchUsers();
 ?>
 
@@ -14,7 +16,7 @@
   <!-- Bootstrap 3.3.7 -->
  <link rel="stylesheet" href="views/resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="views/resources/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Ionicons -->
   <link rel="stylesheet" href="views/resources/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
@@ -33,7 +35,6 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="views/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>

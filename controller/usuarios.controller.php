@@ -1,5 +1,16 @@
 <?php
     class ctrUsers{ // Método para obtener usuarios de la base de datos
+        static public function ctrFetchUsersEdit($item, $value){
+            $table = "usuarios";
+            // Intenta obtener los usuarios desde el modelo
+            try {
+                $users = mdlUsers::mdlFetchUsersEdit($table, $item, $value);
+                return $users;
+            } catch (Exception $e) {
+                // Manejo de errores si ocurre una excepción
+                return "Error: " . $e->getMessage();
+            }
+        }
         static public function ctrFetchUsers(){
             $table = "usuarios";
             // Intenta obtener los usuarios desde el modelo

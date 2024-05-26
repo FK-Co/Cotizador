@@ -37,7 +37,6 @@
                                 <tr>
                                     <td><?php echo ($key+1) ?></td>
                                     <td><?php echo $value["nom_rol"] ?></td>
-                                    <td><button class="btn btn-info btn-sm">Activo</button></td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-warning btn-sm">

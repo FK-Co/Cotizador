@@ -1,6 +1,17 @@
 <?php
     require_once "conexion.php";
     class mdlUsers{
+        static public function mdlFetchUsersEdit($table, $item, $value) {
+            try {
+                $stmt = Conection::conectar()->prepare("SELECT * FROM $table WHERE $item = :value");
+                $stmt->bindParam(":value", $value, PDO::PARAM_STR); 
+                $stmt->execute();
+                return $stmt->fetch(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+                return null;
+            }
+        }
         static public function mdlFetchUsers($table){
                 $stmt=Conection::conectar()-> prepare("SELECT * FROM $table");
                 $stmt ->execute();
