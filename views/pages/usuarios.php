@@ -26,7 +26,6 @@
                                     <th>Nombre</th>
                                     <th>Usuario</th>
                                     <th>Rol</th>
-                                    <th>Foto</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -41,7 +40,6 @@
                                     <td><?php echo $user["nombre"] ?></td>
                                     <td><?php echo $user["usuario"] ?></td>
                                     <td><?php echo $userRoles["nom_rol"] ?></td>
-                                    <td><img src="<?php echo $user["foto"] ?>" width="40" height="40"></td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-warning btn-sm btnEditUser" data-toggle="modal" idUser="<?php echo $user["id"] ?>" data-target="#modal-edit-user">
@@ -95,23 +93,14 @@ Modal Crear usuarios
                     <span class="glyphicon glyphicon-eye-close form-control-feedback"></span>
                 </div>
 
-                <div class="form-group has-feedback" bis_skin_checked="1">
-                    <div class="btn btn-default btn-file" bis_skin_checked="1">
-                        <i class="fas fa-paperclip"></i> Adjuntar Imagen de usuario
-                        <input type="file" name="subirImgUser">
-                    </div>
-                    <br>
-                    <br>
-                    <img class="previsualizarImgUser img-fluid py-2" width='200' height='200'>
-                    <p class="help-block small"> Dimensiones: 480px * 382px | Peso Max. 2MB | Formato: JPG o PNG</p>
-                </div>
 
 
                 <div class="form-group has-feedback">
                     <label>rol</label>
                     <select name="rol_user" class="form-control" required>
                         <option value="1">Administrador</option>
-                        <option value="2">Vendedor</option>
+                        <option value="2">Supervisor</option>
+                        <option value="3">Vendedor</option>
                     </select>
                 </div>
 
@@ -119,14 +108,6 @@ Modal Crear usuarios
                     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">cerrar</button>
                     <button type="submit" class="btn btn-primary">guardar</button>
                 </div>
-
-                <?php 
-
-                $saveUsers = new ctrUsers();
-                $saveUsers->ctrSaveUsers();
-                
-                
-                ?>
 
 
             </form>
@@ -136,6 +117,14 @@ Modal Crear usuarios
     <!-- /.modal-dialog -->
 </div>
 
+
+<?php 
+
+$saveUsers = new ctrUsers();
+$saveUsers->ctrSaveUsers();
+
+
+?>
 
 
 <!--=====================================
@@ -162,18 +151,7 @@ Modal Editar usuarios
                 <div class="form-group has-feedback" bis_skin_checked="1">
                     <input type="password" class="form-control" id="pass_userE" name="pass_userE" placeholder="contraseña">
                     <span class="glyphicon glyphicon-eye-close form-control-feedback"></span>
-                </div>
-
-                <div class="form-group has-feedback" bis_skin_checked="1">
-                    <div class="btn btn-default btn-file" bis_skin_checked="1">
-                        <i class="fas fa-paperclip"></i> Adjuntar Imagen de usuario
-                        <input type="file" name="subirImgUserE">
-                    </div>
-                    <br>
-                    <br>
-                    <img class="previsualizarImgUser img-fluid py-2" width='200' height='200'>
-                    <p class="help-block small"> Dimensiones: 480px * 382px | Peso Max. 2MB | Formato: JPG o PNG</p>
-                </div>
+                </div>  
 
 
                 <div class="form-group has-feedback">

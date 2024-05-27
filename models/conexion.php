@@ -2,7 +2,7 @@
     class Conection{
         static public function conectar(){
             try {
-                $link = new PDO("mysql:host=localhost;dbname=sistema_cotizacion", "root","sebas147");
+                $link = new PDO("mysql:host=localhost;dbname=sistema_cotizacion", "root","root");
                 $link->exec("set names utf8mb4");
                 return $link;
             } catch (PDOException $e) {

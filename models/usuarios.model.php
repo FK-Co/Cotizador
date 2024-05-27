@@ -21,12 +21,11 @@
             }
         static public function mdlSaveUsers($table, $data){
             try {
-                $stmt = Conection::conectar()->prepare("INSERT INTO $table(usuario, password, nombre, foto, rol) VALUES (:USUARIO, :PASS, :NOMBRE, :FOTO, :ROL)");
+                $stmt = Conection::conectar()->prepare("INSERT INTO $table(usuario, password, nombre, rol) VALUES (:USUARIO, :PASS, :NOMBRE, :ROL)");
                 $stmt->bindParam(":NOMBRE", $data["nom_usuario"], PDO::PARAM_STR);
                 $stmt->bindParam(":USUARIO", $data["nom_user"], PDO::PARAM_STR);
                 $stmt->bindParam(":PASS", $data["pass_user"], PDO::PARAM_STR);
                 $stmt->bindParam(":ROL", $data["rol_user"], PDO::PARAM_INT);
-                $stmt->bindParam(":FOTO", $data["foto"], PDO::PARAM_STR);
         
                 if($stmt->execute()){
                     return "ok";
