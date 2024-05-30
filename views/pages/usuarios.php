@@ -32,7 +32,7 @@
                             <tbody>
                             <?php foreach($users as $key => $user): ?>
                                 <?php
-                                $item = "id_roles";
+                                $item = "id_rol";
                                 $userRoles = ctrRoles::ctrFetchRoles($item, $user["rol"]);
                                 ?>
                                 <tr>
@@ -45,7 +45,7 @@
                                             <button class="btn btn-warning btn-sm btnEditUser" data-toggle="modal" idUser="<?php echo $user["id"] ?>" data-target="#modal-edit-user">
                                             <i class="fa-solid fa-pen"></i>
                                             </button>
-                                            <button class="btn btn-danger btn-sm">
+                                            <button class="btn btn-danger btn-sm eliminarUsuario" idUsuarioE="<?php echo $user["id"]?>">
                                                 <i class="fa fa-trash-alt text-white"></i>
                                             </button>
                                         </div>
@@ -101,6 +101,7 @@ Modal Crear usuarios
                         <option value="1">Administrador</option>
                         <option value="2">Supervisor</option>
                         <option value="3">Vendedor</option>
+                        <option value="4">Jefe de Almacen</option>
                     </select>
                 </div>
 
@@ -137,8 +138,8 @@ Modal Editar usuarios
                 <h4 class="alert alert-success alert-dismissible ">Editar usuario</h4>
             </div>
             <form method="post" enctype="multipart/form-data" style="margin: 20px;">
-
                 <div class="form-group has-feedback" bis_skin_checked="1">
+                <input type="hidden" id="idPerfilE" name="idPerfilE">
                     <input type="text" class="form-control"  id="nom_usuariosE" name="nom_usuariosE" placeholder="nombre">
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
@@ -158,22 +159,18 @@ Modal Editar usuarios
                     <label>rol</label>
                     <select name="rol_userE" class="form-control" required>
                         <option value="1">Administrador</option>
-                        <option value="2">Vendedor</option>
+                        <option value="2">Supervisor</option>
+                        <option value="3">Vendedor</option>
+                        <option value="4">Jefe de Almacen</option>
                     </select>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">cerrar</button>
-                    <button type="submit" class="btn btn-primary">guardar</button>
+                    <button type="submit" class="btn btn-primary">Editar</button>
                 </div>
 
-                <?php 
-
-                //$saveUsers = new ctrUsers();
-               // $saveUsers->ctrSaveUsers();
                 
-                
-                ?>
 
 
             </form>
@@ -182,3 +179,8 @@ Modal Editar usuarios
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+<?php 
+        $editUsers = new ctrUsers();
+        $editUsers->ctrEditUsers();
+ ?>

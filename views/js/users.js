@@ -22,8 +22,9 @@ $(".tableUser").on("click", ".btnEditUser", function() {
       success: function(response) {
           console.log("Respuesta AJAX:", response);
           if (response) {
-              $("#nom_usuariosE").val(response["nombre"]);
+              $("#idPerfilE").val(response["id"]);
               $("#nom_userE").val(response["usuario"]);
+              $("#nom_usuariosE").val(response["nombre"]);
               $("#pass_userE").val(response["password"]);
               $('select[name="rol_userE"]').val(response["rol"]);
           } else {
@@ -35,3 +36,55 @@ $(".tableUser").on("click", ".btnEditUser", function() {
       }
   });
 });
+
+
+/*=============================================
+Eliminar usuario
+=============================================*/
+
+$(document).on("click", ".eliminarUsuario", function(){
+	var idUsuario = $(this).attr("idUsuarioE");
+	Swal.fire({
+		title: '¿Está seguro de eliminar este usuario?',
+		text: "¡Si no lo está puede cancelar la acción!",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		cancelButtonText: 'Cancelar',
+		confirmButtonText: 'Si, eliminar usuario!'
+	}).then(function(result){
+		if (result.value) {
+			var datos = new FormData();
+			datos.append("idUsuarioE", idUsuario);
+			$.ajax({
+				url: "ajax/usuarios.ajax.php",
+				method: "POST",
+				data: datos,
+				cache: false,
+				contentType: false,
+				processData: false,
+				success:function (respuesta) {
+					console.log(respuesta);
+					if (respuesta == "ok") {
+						Swal.fire({
+							icon: "success",
+							title: "¡CORRECTO!",
+							text: "El usuario ha sido borrado correctamente",
+							showConfirmButton: true,
+							confirmButtonText: "Cerrar"
+						}).then(function (result) {
+							if (result.value){
+								window.location = "usuarios";
+                     }
+                })
+             }
+          }
+        })
+      }
+    })
+})
+
+
+
+

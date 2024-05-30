@@ -104,5 +104,6 @@
 <!-- AdminLTE App -->
 <script src="views/resources/dist/js/adminlte.min.js"></script>
 <script src="views/js/users.js"></script>
+<script src="views/js/roles.js"></script>
 </body>
 </html>
