@@ -1,8 +1,11 @@
 <?php 
    include_once "controller/usuarios.controller.php";
    include_once "controller/usuarios.controller.php";
+   include_once "controller/marcas.controller.php";
    $roles = ctrRoles::ctrGetRoles();
    $users = ctrUsers::ctrFetchUsers();
+   $marcas = ctrMarcas::ctrGetMarcas();
+
 ?>
 
 <!DOCTYPE html>
@@ -50,8 +53,9 @@
     if(isset($_GET["pagina"])){
       $pagina = $_GET["pagina"];
       switch($pagina){
+        case "marcas":
         case "usuarios":
-        case "roles":
+        case "roles":  
         case "dashboard":
         case "reportes":
         include "pages/".$pagina.".php";
@@ -105,5 +109,6 @@
 <script src="views/resources/dist/js/adminlte.min.js"></script>
 <script src="views/js/users.js"></script>
 <script src="views/js/roles.js"></script>
+<script src="views/js/marcas.js"></script>
 </body>
 </html>
