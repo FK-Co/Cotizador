@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Administrar Marcas</h1>
+                <h1>Administrar Categoría</h1>
             </div>
         </div>
     </div>
@@ -14,33 +14,33 @@
             <div class="col-12">
                 <div class="card card-info card-outline">
                     <div class="card-header">
-                        <button type="button" class="btn btn-success create-marcas " 
-                        data-toggle="modal" data-target="#modal-create-marcas">Crear una nueva marca</button>
+                        <button type="button" class="btn btn-success create-cat " 
+                        data-toggle="modal" data-target="#modal-create-cat">Crear una nueva categoría</button>
                     </div>
                     <br>
                     <div class="card-body">
-                        <table class="table table-bordered table-striped dt-responsive tableMarca" width="100%">
+                        <table class="table table-bordered table-striped dt-responsive tableCat" width="100%">
                             <thead>
                                 <tr>
                                     <th style="width:10px">#</th>
-                                    <th>Marca</th>
+                                    <th>Categoría</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                    foreach($marcas as $key => $value):
+                                    foreach($categorias as $key => $value):
                                 ?>
                                 <tr>
                                     <td><?php echo ($key+1) ?></td>
-                                    <td><?php echo $value["nom_marca"] ?></td>
+                                    <td><?php echo $value["nom_cat"] ?></td>
                                     <td>
                                         <div class="btn-group">
-                                            <button class="btn btn-warning btn-sm btnEditMarca" data-toggle="modal" 
-                                            idMarca="<?php echo $value["id_marca"] ?>" data-target="#modal-edit-marca">
+                                            <button class="btn btn-warning btn-sm btnEditCat" data-toggle="modal" 
+                                            idCat="<?php echo $value["id_cat"] ?>" data-target="#modal-edit-cat">
                                                 <i class="fas fa-pencil-alt text-white"></i>
                                             </button>
-                                            <button class="btn btn-danger btn-sm eliminarMarca" idMarcaE="<?php echo $value["id_marca"]?>">
+                                            <button class="btn btn-danger btn-sm eliminarCat" idCatE="<?php echo $value["id_cat"]?>">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </div>
@@ -60,17 +60,17 @@
 
 
 <!--=====================================
-Modal Crear marcas
+Modal Crear categorias
 ======================================-->
-<div class="modal modal-default fade" id="modal-create-marcas">
+<div class="modal modal-default fade" id="modal-create-cat">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="alert alert-success alert-dismissible ">Agregar nueva marca</h4>
+                <h4 class="alert alert-success alert-dismissible ">Agregar nueva categoría</h4>
             </div>
             <form method="post" enctype="multipart/form-data" style="margin: 20px;">
                 <div class="form-group has-feedback" bis_skin_checked="1">
-                    <input type="text" class="form-control" name="nom_marca" placeholder="nombre">
+                    <input type="text" class="form-control" name="nom_cat" placeholder="nombre">
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
                 <div class="modal-footer">
@@ -87,26 +87,26 @@ Modal Crear marcas
 
 <?php 
 
-$saveMarcas = new ctrMarcas();
-$saveMarcas->ctrSaveMarcas();
+$saveCat = new ctrCat();
+$saveCat->ctrSaveCat();
 
 
 ?>
 
 
 <!--=====================================
-Modal Editar Marcas
+Modal Editar categorias
 ======================================-->
-<div class="modal modal-default fade" id="modal-edit-marca">
+<div class="modal modal-default fade" id="modal-edit-cat">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="alert alert-success alert-dismissible ">Editar Marca</h4>
+                <h4 class="alert alert-success alert-dismissible ">Editar Categoría</h4>
             </div>
             <form method="post" enctype="multipart/form-data" style="margin: 20px;">
                 <div class="form-group has-feedback" bis_skin_checked="1">
-                <input type="hidden" id="idMarcaE" name="idMarcaE">
-                    <input type="text" class="form-control"  id="nom_marcaE" name="nom_marcaE" placeholder="nombre">
+                <input type="hidden" id="idCatE" name="idCatE">
+                    <input type="text" class="form-control"  id="nom_catE" name="nom_catE" placeholder="nombre">
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
 
@@ -126,6 +126,6 @@ Modal Editar Marcas
 </div>
 
 <?php 
-        $editMarcas = new ctrMarcas();
-        $editMarcas->ctrEditMarcas();
+        $editCat = new ctrCat();
+        $editCat->ctrEditCat();
  ?>

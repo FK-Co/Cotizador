@@ -5,14 +5,14 @@
 /*=============================================
 Editar categoria
 =============================================*/
-$(".tableCategoria").on("click", ".btnEditCategoria", function() {
-    var idCategoria = $(this).attr("idCategoria");
-    console.log("ID de categoria seleccionado:", idCategoria);
+$(".tableCat").on("click", ".btnEditCat", function() {
+    var idCat = $(this).attr("idCat");
+    console.log("ID de categoria seleccionado:", idCat);
     var datos = new FormData();
-    datos.append("idCategoria", idCategoria);
+    datos.append("idCat", idCat);
 
     $.ajax({
-        url: "ajax/categoria.ajax.php",
+        url: "ajax/categorias.ajax.php",
         method: "POST",
         data: datos,
         cache: false,
@@ -24,8 +24,8 @@ $(".tableCategoria").on("click", ".btnEditCategoria", function() {
             if (response.error) {
                 console.error("Error:", response.error);
             } else {
-                $("#idCategoriaE").val(response["id_cat"]);
-                $("#nom_categoriaE").val(response["nom_cat"]);
+                $("#idCatE").val(response["id_cat"]);
+                $("#nom_catE").val(response["nom_cat"]);
             }
         },
         error: function(xhr, status, error) {
@@ -38,8 +38,8 @@ $(".tableCategoria").on("click", ".btnEditCategoria", function() {
 Eliminar categoria
 =============================================*/
 
-$(document).on("click", ".eliminarCategoria", function(){
-	var idCategoria = $(this).attr("idCategoriaE");
+$(document).on("click", ".eliminarCat", function(){
+	var idCat = $(this).attr("idCatE");
 	Swal.fire({
 		title: '¿Está seguro de eliminar esta categoria?',
 		text: "¡Si no lo está puede cancelar la acción!",
@@ -52,9 +52,9 @@ $(document).on("click", ".eliminarCategoria", function(){
 	}).then(function(result){
 		if (result.value) {
 			var datos = new FormData();
-			datos.append("idCategoriaE", idRol);
+			datos.append("idCatE", idCat);
 			$.ajax({
-				url: "ajax/categoria.ajax.php",
+				url: "ajax/categorias.ajax.php",
 				method: "POST",
 				data: datos,
 				cache: false,

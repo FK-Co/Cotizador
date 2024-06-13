@@ -5,6 +5,7 @@
    $roles = ctrRoles::ctrGetRoles();
    $users = ctrUsers::ctrFetchUsers();
    $marcas = ctrMarcas::ctrGetMarcas();
+   $categorias =ctrCat::ctrGetCat();
 
 ?>
 
@@ -54,6 +55,7 @@
       $pagina = $_GET["pagina"];
       switch($pagina){
         case "marcas":
+        case "categorias":
         case "usuarios":
         case "roles":  
         case "dashboard":
@@ -110,5 +112,6 @@
 <script src="views/js/users.js"></script>
 <script src="views/js/roles.js"></script>
 <script src="views/js/marcas.js"></script>
+<script src="views/js/categorias.js"></script>
 </body>
 </html>
